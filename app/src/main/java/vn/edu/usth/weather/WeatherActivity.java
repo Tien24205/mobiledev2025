@@ -17,7 +17,7 @@ public class WeatherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_weather);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -26,7 +26,18 @@ public class WeatherActivity extends AppCompatActivity {
         });
 
         Log.i(TAG, "onCreate() called");
+
+        // ✅ Add fragment dynamically
+        if (savedInstanceState == null) {
+            ForecastFragment forecastFragment = new ForecastFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container, forecastFragment)  // R.id.container must be a FrameLayout in activity_weather.xml
+                    .commit();
+
+            Log.i(TAG, "ForecastFragment added dynamically");
+        }
     }
+
 
     @Override
     protected void onStart() {
