@@ -1,23 +1,46 @@
 package vn.edu.usth.weather;
 
+import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 public class ForecastFragment extends Fragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(android.view.LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate layout
-        View view = inflater.inflate(R.layout.fragment_forecast, container, false);
+        // Create a vertical LinearLayout
+        LinearLayout layout = new LinearLayout(getActivity());
+        layout.setOrientation(LinearLayout.VERTICAL);
+        layout.setGravity(Gravity.CENTER);
+        layout.setBackgroundColor(Color.parseColor("#20FF0000")); // just to see area
 
-        view.setBackgroundColor(0x200000FF);
+        // Create TextView
+        TextView textView = new TextView(getActivity());
+        textView.setText("Thursday");
+        textView.setTextSize(24);
+        textView.setTextColor(Color.BLACK);
+        textView.setGravity(Gravity.CENTER);
 
-        return view;
+        // Create ImageView
+        ImageView imageView = new ImageView(getActivity());
+        imageView.setImageResource(R.drawable.weathericon); // one of your icons
+        LinearLayout.LayoutParams imgParams = new LinearLayout.LayoutParams(
+                200, 200); // size in px
+        imgParams.gravity = Gravity.CENTER;
+        imageView.setLayoutParams(imgParams);
+
+        // Add views to layout
+        layout.addView(textView);
+        layout.addView(imageView);
+
+        return layout;
     }
 }
