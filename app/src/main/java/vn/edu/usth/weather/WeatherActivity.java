@@ -11,7 +11,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class WeatherActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "WeatherActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,52 +26,18 @@ public class WeatherActivity extends AppCompatActivity {
         });
 
         Log.i(TAG, "onCreate() called");
-
-        // ✅ Add fragment dynamically
-        if (savedInstanceState == null) {
-            ForecastFragment forecastFragment = new ForecastFragment();
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, forecastFragment)  // R.id.container must be a FrameLayout in activity_weather.xml
-                    .commit();
-
-            Log.i(TAG, "ForecastFragment added dynamically");
-        }
-    }
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.i(TAG, "onStart() called");
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i(TAG, "onResume() called");
-    }
-
+    protected void onStart() { super.onStart(); Log.i(TAG, "onStart() called"); }
     @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i(TAG, "onPause() called");
-    }
-
+    protected void onResume() { super.onResume(); Log.i(TAG, "onResume() called"); }
     @Override
-    protected void onStop() {
-        super.onStop();
-        Log.i(TAG, "onStop() called");
-    }
-
+    protected void onPause() { super.onPause(); Log.i(TAG, "onPause() called"); }
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.i(TAG, "onDestroy() called");
-    }
-
+    protected void onStop() { super.onStop(); Log.i(TAG, "onStop() called"); }
     @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.i(TAG, "onRestart() called");
-    }
+    protected void onDestroy() { super.onDestroy(); Log.i(TAG, "onDestroy() called"); }
+    @Override
+    protected void onRestart() { super.onRestart(); Log.i(TAG, "onRestart() called"); }
 }
